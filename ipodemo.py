@@ -39,7 +39,7 @@ print 'Patient name: ' + smart.human_name(patient.name[0])
 print 'Medications with status=active: '
 print '------------------------------------------------------'
 
-# Search for madication orders for the patient we just retrieved
+# Search for medication orders for the patient we just retrieved
 import fhirclient.models.medicationorder as mo
 search = mo.MedicationOrder.where(struct={'patient': patient.id, 'status': 'active'})
 medOrders = search.perform_resources(smart.server)
