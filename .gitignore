@@ -1,3 +1,5 @@
 # Ignore temporary archives
 IPO_Cerner_FHIR_Demo.zip
 ipodemo-output.txt
+env2-ipodemo
+env3-ipodemo
