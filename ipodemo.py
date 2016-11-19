@@ -48,13 +48,16 @@ medOrders = search.perform_resources(smart.server)
 for medOrder in medOrders:
     print 'Date written: ' + medOrder.dateWritten.isostring
     print '  Medication: ' + medOrder.medicationCodeableConcept.text
+
     try:
-        print 'Code: ' + medOrder.medicationCodeableConcept.coding[0].code, medOrder.medicationCodeableConcept.coding[0].system
-        print medOrder.medicationCodeableConcept.coding[0].display
+        for code in medOrder.medicationCodeableConcept.coding:
+            print 'Code: ' + code.code, 'Coding System: ' + code.system
+            print 'Display: ' + code.display
     except TypeError:
-        print '**No code found.**'
+        print '**No codeable concept found for this order.**'
+
     try:
         print '  Prescriber: ' + medOrder.prescriber.display
     except TypeError:
-        pass
+        print '**No prescriber found**'
     print '------------------------------------------------------'
